@@ -71,6 +71,7 @@ export default function HomePage() {
       <footer className="footer">
         <div className="page-width footer-inner">
           <div><span className="brand-mark">◒</span> Made with care for the IIMU pack.</div>
+          <div className="footer-credit">Created by Shashank Rustagi, GSCM&apos;2026 · <a href="mailto:shashankrustagi.gscm2026@iimu.ac.in">shashankrustagi.gscm2026@iimu.ac.in</a></div>
           <div className="footer-small">If you see a dog who needs help, please contact campus security.</div>
         </div>
       </footer>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DogVisual } from "../../../components/dog-visual";
-import { dogs, getDog } from "../../../lib/dogs";
+import { dogContacts, dogs, getDog } from "../../../lib/dogs";
 
 export function generateStaticParams() {
   return dogs.map((dog) => ({ slug: dog.slug }));
@@ -47,6 +47,25 @@ export default function DogProfile({ params }: { params: { slug: string } }) {
           <p className="eyebrow">When you see {dog.name}</p>
           <h2>Let them set<br />the pace.</h2>
           <p>Every dog is different. Read their body language, be gentle, and always respect their space.</p>
+        </div>
+      </section>
+      <section className="report-section page-width">
+        <div>
+          <p className="eyebrow">Need a hand?</p>
+          <h2>Report an issue<br /><em>with {dog.name}.</em></h2>
+          <p className="report-copy">If {dog.name} is hurt, missing, or needs help, send us a WhatsApp message. Please include what you saw and where.</p>
+        </div>
+        <div className="contact-list">
+          {dogContacts.map((contact) => {
+            const message = encodeURIComponent(`Hi ${contact.name}, I would like to report an issue with ${dog.name}. `);
+            return (
+              <a className="whatsapp-button" href={`https://wa.me/${contact.phone}?text=${message}`} target="_blank" rel="noreferrer" key={contact.phone}>
+                <span className="whatsapp-icon">◔</span>
+                <span>Message {contact.name}</span>
+                <span className="contact-arrow">↗</span>
+              </a>
+            );
+          })}
         </div>
       </section>
       <div className="profile-bottom page-width">

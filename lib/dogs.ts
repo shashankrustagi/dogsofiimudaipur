@@ -9,6 +9,11 @@ export type Dog = {
   image: string;
 };
 
+export const dogContacts = [
+  { name: "Shashank Rustagi", phone: "917838559783" },
+  { name: "Kirti Mishra", phone: "917290006535" }
+] as const;
+
 const rawDogs = [
   ["BRUNO", 8, "Friendly", "HOSTEL"],
   ["PANDA", 5, "Friendly", "HOSTEL"],

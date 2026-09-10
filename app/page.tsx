@@ -21,7 +21,10 @@ export default function HomePage() {
             <span className="brand-mark">◒</span>
             <span>dogs of <strong>IIMU</strong></span>
           </Link>
-          <span className="qr-note">SCAN · MEET · CARE</span>
+          <div className="home-nav">
+            <Link className="qr-note" href="/qr-codes">QR CODES</Link>
+            <span className="qr-note">SCAN · MEET · CARE</span>
+          </div>
         </nav>
         <div className="hero-content page-width">
           <p className="eyebrow light">A campus full of good company</p>

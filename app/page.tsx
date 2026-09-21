@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { DogAssistant } from "../components/dog-assistant";
 import { DogVisual } from "../components/dog-visual";
 import { areas, dogs } from "../lib/dogs";
 
@@ -70,6 +71,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <DogAssistant />
 
       <footer className="footer">
         <div className="page-width footer-inner">

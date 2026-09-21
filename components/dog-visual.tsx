@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function DogVisual({
   name,
@@ -12,10 +12,17 @@ export function DogVisual({
   profile?: boolean;
 }) {
   const [hasImage, setHasImage] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const imageElement = imageRef.current;
+    if (imageElement?.complete && imageElement.naturalWidth > 0) setHasImage(true);
+  }, [image]);
 
   return (
     <>
       <img
+        ref={imageRef}
         className={`${profile ? "uploaded-photo" : "uploaded-card-photo"} ${hasImage ? "is-loaded" : ""}`}
         src={image}
         alt={`${name}, a dog from the IIM Udaipur campus`}

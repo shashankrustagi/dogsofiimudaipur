@@ -49,6 +49,9 @@ h1 em, .hero h1 em { color: var(--lime); font-family: "Playfair Display", serif;
 .assistant-result p { color: #edf2e8; font-size: 13px; line-height: 1.55; margin: 0; }
 .assistant-sources { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; color: #b8cbb8; font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
 .assistant-sources span:not(:first-child) { border: 1px solid rgba(211,238,136,.35); color: var(--lime); padding: 4px 6px; }
+.assistant-followups { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 13px; color: #b8cbb8; font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.assistant-followups button { border: 1px solid rgba(211,238,136,.35); background: transparent; color: var(--lime); padding: 4px 6px; cursor: pointer; font: inherit; text-transform: none; letter-spacing: 0; }
+.assistant-followups button:hover { border-color: var(--lime); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; }
 .section-heading h2 { font-size: clamp(40px, 6vw, 65px); letter-spacing: -.06em; line-height: .95; margin: 0; }

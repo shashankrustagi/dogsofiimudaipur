@@ -10,6 +10,7 @@ type AgentSource = {
 
 type AgentResponse = {
   answer?: string;
+  suggestions?: string[];
   sources?: AgentSource[];
   error?: string;
 };
@@ -23,6 +24,7 @@ const suggestedQuestions = [
 export function DogAssistant() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const [sources, setSources] = useState<AgentSource[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +37,7 @@ export function DogAssistant() {
     setIsLoading(true);
     setError("");
     setAnswer("");
+    setSuggestions([]);
     setSources([]);
 
     try {
@@ -46,6 +49,7 @@ export function DogAssistant() {
       const data = (await response.json()) as AgentResponse;
       if (!response.ok) throw new Error(data.error ?? "The assistant could not answer right now.");
       setAnswer(data.answer ?? "I could not find an answer in the campus records.");
+      setSuggestions(data.suggestions ?? []);
       setSources(data.sources ?? []);
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "The assistant could not answer right now.");
@@ -88,6 +92,14 @@ export function DogAssistant() {
               <span>Sources</span>
               {sources.map((source, index) => (
                 <span key={`${source.source}-${source.dog}-${index}`}>{source.dog ?? source.source}</span>
+              ))}
+            </div>
+          )}
+          {!error && suggestions.length > 0 && (
+            <div className="assistant-followups">
+              <span>Try next</span>
+              {suggestions.map((suggestion) => (
+                <button type="button" key={suggestion} onClick={() => setQuestion(suggestion)}>{suggestion}</button>
               ))}
             </div>
           )}
